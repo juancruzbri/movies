@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/need/header.css">
+        <title>Estrenos | Movies</title>
+    </head>
+
+<body>
+    <div class="contenedor-todo">
+        <main class="main">
+            <div class="container">
+
+    <%- include('partials/headerNavbar') %>
+    <h1>ESTRENOS:</h1>
+    <ul>
+        <% movies.forEach(function(movie){%>
+            <a href="/movies/detail/<%=movie.id%>">
+        <li><%= movie.title %></li>
+            </a>
+        <%})%>
+    </ul>
+
+    </div>
+    </main>
+    </div>
+</body>
+</html>

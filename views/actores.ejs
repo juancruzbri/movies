@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/need/header.css">
+        <title>Home | Movies</title>
+    </head>
+<body>
+    <%- include('partials/headerNavbar') %>
+    <div class="contenedor-todo">
+        <main class="main">
+            <div class="container">
+    <h1>ACA ESTA LA LISTA DE PELICULAS:</h1>
+    <ul>
+        <% actors.forEach(function(actor){%>
+            <a href="/actors/detail/<%=actor.id%>" style="text-decoration: none;">
+        <li><%= actor.first_name %> <%= actor.last_name %></li>
+            </a>
+        <%})%>
+    </ul>
+    </div>
+    </main>
+    </div>
+</body>
+</html>

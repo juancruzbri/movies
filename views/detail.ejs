@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/need/header.css">
+        <title>Detalle | Movies</title>
+    </head>
+
+<body >
+    <%- include('partials/headerNavbar') %>
+
+    <br>
+    <div class="contenedor-todo">
+        <main class="main">
+            <div class="container">
+<h2>Este es el detalle de la pelicula: <%= movie.title%></h2>
+<br>
+<article>
+    <h3>Rating:  <%= movie.rating%></h3><br>
+    <h3>Premios:  <%= movie.awards%></h3><br>
+    <h3>Tiempo:  <%= movie.length%> minutos</h3>
+    <form action="/movies/delete/<%= movie.id%>" method="POST">
+        <Button type="submit">ELIMINAR</Button>
+        </form>
+        <form action="/movies/update/<%= movie.id%>" method="GET">
+            <Button type="submit">MODIFICAR</Button>
+            </form>
+
+</article>
+</div>
+</main>
+</div>
+</body>
+</html>
