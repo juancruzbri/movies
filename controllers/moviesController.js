@@ -8,8 +8,7 @@ moviesController= {
         //Buscar las películas//
         db.Movie.findAll({
             
-            order: [['title', 'ASC']],
-            include: [{association:'generos'}]
+            order: [['title', 'ASC']]
 
         })
         .then((movies)=>{console.log(movies.generos); 
