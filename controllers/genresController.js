@@ -5,9 +5,13 @@ const { removeData } = require('jquery');
 let genresController= {
     index: function(req,res){
         db.Genero.findAll({
-            limit:10
+            limit:10,
+            include:[{association:"peliculas"}]
         })
-        .then((generos)=>res.render('generos', {generos}));
+        .then((generos)=>{
+            console.log(generos);
+            res.render('generos', {generos})
+        });
         
     }
 

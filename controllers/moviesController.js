@@ -11,13 +11,17 @@ moviesController= {
             order: [['title', 'ASC']]
 
         })
-        .then((movies)=>{console.log(movies.generos); 
+        .then((movies)=>{console.log(movies); 
             res.render('moviesHome',{movies})});
     },
     detail: function(req,res){
         //buscamos las peliculas por el Pk//
-        db.Movie.findByPk(req.params.id)
-        .then((movie)=> {res.render('detail', {movie})});
+        db.Movie.findByPk(req.params.id,{
+            include:[{association:"generos"},{association: "actores"}]
+        })
+        .then((movie)=> {
+            console.log(movie);
+            res.render('detail', {movie})});
     },
     delete: function(req,res){
 

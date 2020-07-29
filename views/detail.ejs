@@ -21,13 +21,30 @@
 <article>
     <h3>Rating:  <%= movie.rating%></h3><br>
     <h3>Premios:  <%= movie.awards%></h3><br>
-    <h3>Tiempo:  <%= movie.length%> minutos</h3>
+    <h3>Tiempo:  <%= movie.length%> minutos</h3><br>
+    <% if(movie.generos){%>
+        <h3>Genero: <%= movie.generos.name%> </h3><br>
+    <%}else{%>
+        <h3>Genero: NO TIENE GENERO </h3><br>
+    <%}%>
+
+    <% if(movie.actores.lenght != 0){%>
+        <h3>Actores: <h3>
+            <ul>
+                <%for(let i=0;i < movie.actores.length; i++){%>       
+                    <li><%= movie.actores[i].first_name%> <%= movie.actores[0].last_name%></li>
+                <%}%>
+            </ul>
+    <%}else{%>
+        <h3>No tiene actores </h3><br>
+    <%}%>
+
     <form action="/movies/delete/<%= movie.id%>" method="POST">
         <Button type="submit">ELIMINAR</Button>
         </form>
         <form action="/movies/update/<%= movie.id%>" method="GET">
             <Button type="submit">MODIFICAR</Button>
-            </form>
+        </form>
 
 </article>
 </div>

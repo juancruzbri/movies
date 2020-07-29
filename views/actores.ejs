@@ -14,10 +14,12 @@
             <div class="container">
     <h1>ACA ESTA LA LISTA DE PELICULAS:</h1>
     <ul>
+       
         <% actors.forEach(function(actor){%>
             <a href="/actors/detail/<%=actor.id%>" style="text-decoration: none;">
         <li><%= actor.first_name %> <%= actor.last_name %></li>
             </a>
+
         <%})%>
     </ul>
     </div>

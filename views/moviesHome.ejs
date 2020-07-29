@@ -15,12 +15,8 @@
     <h1>ACA ESTA LA LISTA DE PELICULAS:</h1>
     <ul>
         <% movies.forEach(function(movie){%>
-            <a href="/movies/detail/<%=movie.id%>" style="text-decoration: none;">
-                <%if (movie.genero){%>
-        <li><%= movie.title %> --- <%=movie.generos.name%></li> 
-        <%} else {%>
-            <li><%= movie.title %> ---no tiene genero</li>
-            <%}%>
+            <a href="/movies/detail/<%=movie.id%>" style="text-decoration: none;">                
+            <li><%= movie.title %> </li>            
             </a>
         <%})%>
     </ul>

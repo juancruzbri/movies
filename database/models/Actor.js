@@ -7,14 +7,25 @@ module.exports = (sequelize, DataTypes) => {
         first_name: DataTypes.STRING,
         last_name: DataTypes.STRING,
         rating: DataTypes.DECIMAL,
-        favorite_movie_id:DataTypes.INTEGER,    
+        favorite_movie_id:DataTypes.INTEGER   
 
     }
     let config= {
         tableName:"actors",
         timestamps: false
     }
-    const Actor = sequelize.define('Actor', cols,config);
+
+    let Actor = sequelize.define('Actor', cols,config);
+
+    Actor.associate = function(models){
+        Actor.belongsToMany(models.Movie, {
+            as: "peliculas",
+            through: "actor_movie",
+            foreignKey: "actor_id",
+            otherKey: "movie_id",
+            timestamps: false
+        })
+   }
 
 
     
