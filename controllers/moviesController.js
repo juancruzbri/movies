@@ -2,6 +2,7 @@
 let db = require ('../database/models');
 const { sequelize, Sequelize } = require('../database/models');
 const { removeData } = require('jquery');
+const { promiseImpl } = require('ejs');
 
 moviesController= {
     index:function(req,res){
@@ -63,7 +64,13 @@ moviesController= {
         })
     },
     create: function(req,res){
-        res.render('create');
+        let generos=db.Genero.findAll()
+        let actores= db.Actor.findAll()
+        Promise.all([generos,actores])
+        .then(([generos,actores])=>{
+            console.log(actores);
+            res.render('create', {generos, actores}
+            )});
     },
     storeCreate: function(req,res){
         db.Movie.create({
@@ -71,7 +78,13 @@ moviesController= {
             rating: req.body.rating,
             awards: req.body.awards,
             length: req.body.length,
-        })
+            genre_id: req.body.genero
+        })//ACA ME EXPLOTA//
+        .then(()=>{
+            db.Movie.set([res.body.actor,req.body.actor2],{
+                where: {title: req.body.title}
+            })            
+        })//ACA ME EXPLOTA//
         .then(()=>res.redirect('/movies'))
     },
     search:function(req,res){

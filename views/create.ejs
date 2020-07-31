@@ -24,8 +24,25 @@
         <input type="text" name="awards"><br>
         <label for="">Duracion(min):</label><br>
         <input type="text" name="length"><br>
+        <label for="">ELEJITE UN GENERO PAPÁ</label>
+        <select name="genero" id="">
+            <%generos.forEach(function(genero,i){%>
+            <option value="<%=genero.id%>"><%=genero.name%></option>
+            <%})%>
+        </select><br>
+        <select name="actor" id="">
+            <%actores.forEach(function(actor,i){%>
+                <option value="<%=actor.id%>"><%=actor.first_name%> <%=actor.last_name%></option>
+            <%})%>
+        </select>
+        <select name="actor2" id="">
+            <%actores.forEach(function(actor,i){%>
+                <option value="<%=actor.id%>"><%=actor.first_name%> <%=actor.last_name%></option>
+            <%})%>
+        </select>
         <button type="submit">Crear</button>
     </form>
+
 
 </div>
 </main>
